@@ -1,0 +1,17 @@
+{
+  "name": "dserfozo.nodeservices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "ts-loader": "^3.3.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.3.0"
+  }
+}

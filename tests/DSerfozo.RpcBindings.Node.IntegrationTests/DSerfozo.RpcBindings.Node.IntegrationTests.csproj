@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Target Name="NpmBuild" BeforeTargets="BeforeBuild" Condition="!Exists('$(ProjectDir)node_modules')">
+    <Exec Condition="!Exists('$(ProjectDir)..\..\src\dserfozo-rpcbindings\node_modules')" Command="pushd &quot;$(ProjectDir)..\..\src\dserfozo-rpcbindings&quot; &amp;&amp; npm install &amp;&amp; popd" />
+    <Exec Command="pushd &quot;$(ProjectDir)..\..\src\dserfozo-rpcbindings&quot; &amp;&amp; npm run build &amp;&amp; popd" />
+    <Exec Command="npm install" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Moq" Version="4.8.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="8.0.3" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DSerfozo.RpcBindings.Json\DSerfozo.RpcBindings.Json.csproj" />
+    <ProjectReference Include="..\DSerfozo.NodeServices.Sockets\DSerfozo.NodeServices.Sockets.csproj" />
+    <ProjectReference Include="..\DSerfozo.NodeServices\DSerfozo.NodeServices.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="binding-init.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="binding-test.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="builtin-modules-init.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="builtin-modules-test.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="node_modules\dserfozo-rpcbindings\dist\index.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

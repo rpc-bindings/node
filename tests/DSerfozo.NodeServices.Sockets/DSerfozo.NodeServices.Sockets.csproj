@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- <Target Name="GenerateScript" BeforeTargets="Build">
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target> -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSerfozo.NodeServices\DSerfozo.NodeServices.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\JavaScriptServices\src\Microsoft.AspNetCore.NodeServices.Sockets\**\*.cs" />
+    <None Include="..\..\JavaScriptServices\src\Microsoft.AspNetCore.NodeServices.Sockets\TypeScript\**\*.*" LinkBase="TypeScript" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Content\Node\entrypoint-socket.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Node\entrypoint-socket.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Threading.Tasks.Dataflow" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>
