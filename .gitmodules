@@ -1,6 +1,6 @@
 [submodule "JavaScriptServices"]
 	path = JavaScriptServices
-	url = https://github.com/arsher/JavaScriptServices.git
+	url = https://github.com/rpc-bindings/JavaScriptServices.git
 [submodule "common"]
 	path = common
 	url = https://github.com/rpc-bindings/common.git

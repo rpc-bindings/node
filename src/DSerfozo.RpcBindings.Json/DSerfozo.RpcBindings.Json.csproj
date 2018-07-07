@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="DSerfozo.RpcBindings" Version="1.0.0-CI5" />
-    <PackageReference Include="Newtonsoft.Json" Version="8.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
 </Project>

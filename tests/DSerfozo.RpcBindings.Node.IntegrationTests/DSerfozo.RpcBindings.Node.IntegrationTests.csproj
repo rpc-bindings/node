@@ -5,6 +5,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <DefaultItemExcludes>node_modules\**;$(DefaultItemExcludes)</DefaultItemExcludes>
+  </PropertyGroup>
+
   <Target Name="NpmBuild" BeforeTargets="BeforeBuild" Condition="!Exists('$(ProjectDir)node_modules')">
     <Exec Condition="!Exists('$(ProjectDir)..\..\src\dserfozo-rpcbindings\node_modules')" Command="pushd &quot;$(ProjectDir)..\..\src\dserfozo-rpcbindings&quot; &amp;&amp; npm install &amp;&amp; popd" />
     <Exec Command="pushd &quot;$(ProjectDir)..\..\src\dserfozo-rpcbindings&quot; &amp;&amp; npm run build &amp;&amp; popd" />
@@ -12,9 +16,9 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="Moq" Version="4.8.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="8.0.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
+    <PackageReference Include="Moq" Version="4.8.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
