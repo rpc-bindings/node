@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <SignAssembly>true</SignAssembly>
@@ -8,8 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSerfozo.RpcBindings" Version="1.0.0-CI5" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
+
+  <Choose>
+    <When Condition="'$(IsInAllRepo)' == 'True'">
+      <ItemGroup>
+        <ProjectReference Include="..\..\..\core\src\DSerfozo.RpcBindings\DSerfozo.RpcBindings.csproj" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="DSerfozo.RpcBindings" Version="1.0.0-CI5" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 
 </Project>
