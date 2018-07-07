@@ -27,7 +27,7 @@ namespace DSerfozo.RpcBindings.Json
 
             if (binding.TargetType != null)
             {
-                result = val.ToObject(binding.TargetType, serializer);
+                result = val?.ToObject(binding.TargetType, serializer);
             }
             else
             {
