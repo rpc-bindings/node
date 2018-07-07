@@ -18,7 +18,7 @@ namespace DSerfozo.RpcBindings.Json
         private static readonly Encoding Utf8EncodingWithoutBom = new UTF8Encoding(false);
 
         private readonly ISubject<RpcResponse<JToken>> rpcResponseSubject =
-            Subject.Synchronize(new Subject<RpcResponse<JToken>>(), new NewThreadScheduler());
+            Subject.Synchronize(new Subject<RpcResponse<JToken>>(), new EventLoopScheduler());
         private readonly JsonSerializer jsonSerializer;
         private bool failedWrite;
         private Stream inputStream;
