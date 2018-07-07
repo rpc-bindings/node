@@ -1,4 +1,4 @@
-version: 0.1.{build}
+version: 1.0.0-CI{build}
 image: Visual Studio 2017
 configuration: Release
 platform: Any CPU
@@ -25,6 +25,8 @@ install:
     npm install
 
     cd ..\..
+
+    nuget update DSerfozo.RpcBindings.Node.sln -Safe -PreRelease
 
     dotnet restore
 build_script:
