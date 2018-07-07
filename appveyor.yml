@@ -38,9 +38,8 @@ artifacts:
 - path: src\DSerfozo.RpcBindings.Json\bin\Release\DSerfozo.RpcBindings.Json*.nupkg
 - path: src\dserfozo-rpcbindings\dserfozo-rpcbindings-*.tgz
 deploy_script:
-- ps: |
-    cd src\dserfozo-rpcbindings
-
-    iex "npm publish"
-
-    "//www.myget.org/F/dserfozo/npm/:_authToken=`$`{npm_key`}" | Out-File (Join-Path $ENV:APPVEYOR_BUILD_FOLDER ".npmrc") -Encoding UTF8
+- ps: '"registry=https://www.myget.org/F/dserfozo/npm/`r`n//www.myget.org/F/dserfozo/npm/:_authToken=$env:npm_key" | Out-File "$env:userprofile\.npmrc" -Encoding UTF8'
+- cd src\dserfozo-rpcbindings
+- npm publish
+- cd ..\..
+- nuget push src\DSerfozo.RpcBindings.Json\bin\Release\DSerfozo.RpcBindings.Json*.nupkg -ApiKey %npm_key% -Source https://www.myget.org/F/dserfozo/api/v2/package
